@@ -34,6 +34,7 @@ class MusicService : Service() {
 
         override fun play() {
             Log.d(TAG, "play: ")
+            startNotification()
         }
 
         override fun pause() {
@@ -55,11 +56,11 @@ class MusicService : Service() {
 
     override fun onBind(intent: Intent?): IBinder? {
         Log.d(TAG, "onBind: ")
-        startNotification("ok")
+        startNotification()
         return mBinder
     }
 
-    fun startNotification(string: String) {
+    fun startNotification() {
         val channel = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel(
                 "khoa",
@@ -74,7 +75,7 @@ class MusicService : Service() {
         )
         val notification: Notification = NotificationCompat.Builder(this, "khoa")
             .setContentTitle("A service is running in the background")
-            .setContentText(string).build()
+            .setContentText("aaaaaaaaaaaaaaaaaa").build()
         startForeground(1, notification)
     }
 }

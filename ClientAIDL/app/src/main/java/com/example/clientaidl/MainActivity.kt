@@ -7,12 +7,14 @@ import android.content.ServiceConnection
 import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
     val TAG = "nnn"
-    private val MUSIC_ACTION = "com.sunasterisk.service.MusicService.BIND"
+    private val MUSIC_ACTION = "musicservicebind"
     private val MUSIC_PACKAGE = "com.example.serviceaidl"
     private var mService: IMusicService? = null
     private var mIsServiceConnected = false
@@ -33,7 +35,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        bindService()
+        mTVClick.setOnClickListener {
+//            mService?.play()
+            bindService()
+            Toast.makeText(this, "toast", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun bindService() {
