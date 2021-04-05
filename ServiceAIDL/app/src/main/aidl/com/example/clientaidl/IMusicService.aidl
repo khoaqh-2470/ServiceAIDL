@@ -1,5 +1,5 @@
 // IMusicService.aidl
-package com.example.serviceaidl;
+package com.example.clientaidl;
 
 // Declare any non-default types here with import statements
 

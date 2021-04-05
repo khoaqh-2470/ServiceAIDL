@@ -1,4 +1,4 @@
-package com.example.serviceaidl
+package com.example.clientaidl
 
 import org.junit.Test
 

@@ -16,18 +16,15 @@ class MainActivity : AppCompatActivity() {
     val TAG = "nnn"
     private val MUSIC_ACTION = "musicservicebind"
     private val MUSIC_PACKAGE = "com.example.serviceaidl"
-    private var mService: IMusicService? = null
-    private var mIsServiceConnected = false
+    private var iMusicService: IMusicService? = null
 
     private val mServiceConnection: ServiceConnection = object : ServiceConnection {
         override fun onServiceConnected(componentName: ComponentName, iBinder: IBinder) {
-            mService = IMusicService.Stub.asInterface(iBinder)
-            mIsServiceConnected = true
-            Log.d(TAG, "onServiceConnected: ")
+            iMusicService = IMusicService.Stub.asInterface(iBinder)
+            Toast.makeText(this@MainActivity, "onServiceConnected", Toast.LENGTH_SHORT).show()
         }
 
         override fun onServiceDisconnected(componentName: ComponentName) {
-            mIsServiceConnected = false
             Log.d(TAG, "onServiceDisconnected: ")
         }
     }
@@ -35,10 +32,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        mTVClick.setOnClickListener {
-//            mService?.play()
+        buttonConnect.setOnClickListener {
             bindService()
-            Toast.makeText(this, "toast", Toast.LENGTH_SHORT).show()
+        }
+        buttonSongName.setOnClickListener {
+            Toast.makeText(this, "SongName " + iMusicService?.songName, Toast.LENGTH_SHORT).show()
         }
     }
 
