@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ClientAIDL</string>
+    <string name="num_messenger">num messenger</string>
 </resources>

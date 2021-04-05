@@ -10,18 +10,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ServiceAIDL">
-<!--        <activity android:name=".MainActivity">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <service
-            android:name="com.example.clientaidl.MusicService" android:process=":remote">
+            android:name="com.example.clientaidl.MusicService"
+            android:process=":remote">
             <intent-filter>
                 <action android:name="musicservicebind" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.example.clientaidl.MessengerService"
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="messengerbind" />
             </intent-filter>
         </service>
     </application>
